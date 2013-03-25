@@ -1,0 +1,14 @@
+ <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <%@categories.each do |category|%>
+                <li class="nav-header"><%=category.title%></li>
+                <%category.brands.each do |brand|%>
+                <li><%= link_to  brand.title, brand_products_path(category.id,brand.id)%></li>
+                <%end%>
+              <%end%>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->

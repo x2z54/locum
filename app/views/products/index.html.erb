@@ -1,0 +1,52 @@
+<%= javascript_include_tag "application" %>
+
+<%= render "layouts/panel" %>
+
+<div class="span13" style="margin-left:5%" >
+  <div class="alert alert-info">
+    <h1>Список товаров</h1>
+  </div>
+  <%= link_to 'Добавить товар', new_product_path , :class=>"btn btn-info" %>
+<hr>
+<%Category.all.each do |category|%>
+
+  <% if category.products.count > 0%>
+  <br>
+  <div class="alert alert-success">
+  <h3><%= category.title%></h3>
+</div>
+    <table class="table table-bordered table-hover">
+      <thead>  <tr>
+    <th>Название</th>
+    <th>Описание</th>
+    <th>Изображение</th>
+    <th>Цена</th>
+    <th>Бренд</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<tbody>
+
+<% category.products.each do |product| %>
+  <tr>
+    <td><%= product.title %></td>
+    <td><%= product.description %></td>
+    <td><%= image_tag product.avatar.url, :style=>"height:200px" %></td>
+    <td><%= product.price %> р.</td>
+    <td><%= product.brand.title %></td>
+      <td><%= link_to 'Редактировать', :action => :edit, :id => product.id %></td>
+      <td><%= link_to 'Удалить',  {:action => :destroy, :id => product.id} , :method => :delete, :confirm => 'Вы уверены?' %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+  <%end%>
+
+<%end%>
+
+
+
+<br />
+
+</div>

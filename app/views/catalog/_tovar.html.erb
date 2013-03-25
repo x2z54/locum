@@ -1,0 +1,11 @@
+ <%Category.all.each do |category|%>
+ <% category.products.each do |product| %>
+      <li class="span4">
+      <a href="#" class="thumbnail" style="text-align:right" id="product">
+        <%= image_tag product.avatar.url, :style => "height:200px" %>
+        <p><strong><%= product.title %></strong></p>
+        <p style="color: #0088cc;"><strong><%= product.price %> р.</strong></p>
+      </a>
+      </li>
+  <% end %>
+ <% end %>

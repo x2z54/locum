@@ -1,0 +1,42 @@
+<%= render "layouts/reg" %>
+
+<%= render "layouts/head" %>
+
+<%= render "layouts/menu" %>
+
+
+    <div class="span7" style="margin-right:13%;margin-left:5%">
+      <div class="alert alert-info">
+       <h3>Каталог</h3>
+      </div>
+    <hr>
+
+<%@categories.each do |category|%>
+    <div style="margin-left:2%;" class='category-wrapper'>
+      <h4><%= category.title%></h4>
+          <select  class='brand-select' style="width:170px" >
+          <%category.brands.each do |brand|%>           
+                <option data-link='<%= brand_products_url(category.id,brand.id)%>'><%= brand.title%></option>         
+            <%end%>
+            </select>
+             <button class='goto-brand btn' style="margin-left:1%;margin-bottom:1.2%">Фильтрация по бренду</button>
+            <a href="#" style="float:right">Сортировать по цене</a>
+    </div>
+    <ul class="thumbnails">
+  <% category.products.each do |product| %>
+
+    <ul class="thumbnails">
+        <li class="span4" style="margin-left:1%">
+        <%= link_to raw("#{image_tag product.avatar.url, :style => "height:200px"} 
+        <p><strong>#{product.title}</strong></p>
+        <p style=\"color:\#0088cc\"><strong>#{product.price} p.</strong></p>"), {:controller => :products, :action => :show, :id => product.id}, :class=>"thumbnail", :style => "text-align:right" %>
+        </li>
+  <% end %>
+    </ul>
+<hr>
+<% end %>
+
+    </div>
+
+</div>
+</div>

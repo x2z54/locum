@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Сантехника Manvel</title>
+<%= csrf_meta_tag %>
+<%= javascript_include_tag 'http://code.jquery.com/jquery-1.9.1.min.js' %>
+<%= javascript_include_tag 'http://code.jquery.com/jquery-migrate-1.1.1.min.js' %>
+<%= javascript_include_tag 'select2.js' %>
+<%= stylesheet_link_tag 'bootstrap.css' %>
+<%= stylesheet_link_tag 'bootstrap-responsive.css' %>
+<%= stylesheet_link_tag 'style.css' %>
+<%= stylesheet_link_tag 'select2.css' %>
+<%= stylesheet_link_tag 'style.css' %>
+<%= stylesheet_link_tag 'demo_table.css' %>
+<%= stylesheet_link_tag 'demo_table_jui.css' %>
+<%= stylesheet_link_tag 'jquery.dataTables.css' %>
+<%= javascript_include_tag 'catalog'%>
+<%= javascript_include_tag 'bootstrap.js' %>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+    <script>
+        $(document).ready(function() { $("#e1").select2(); });
+        $(document).ready(function() { $("#e2").select2(); });
+    </script>
+
+<%= csrf_meta_tag %>
+</head>
+
+<body>
+<%= yield %>
+
+</body>
+</html>

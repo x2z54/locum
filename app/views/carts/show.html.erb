@@ -1,0 +1,39 @@
+<%= javascript_include_tag "application" %>
+<%= render "layouts/head" %>
+<%= render "layouts/menu" %>
+
+
+
+<div class="span9" style="margin-left:5%" >
+  <div class="alert alert-info">
+    <h1>Ваша корзина</h1>
+  </div>
+
+<%= button_to 'Очистить корзину', @cart, :method => :delete,
+:confirm => 'Вы уверены?', :class => "btn btn-danger", :style => "float:right;margin-bottom:1%" %>
+<table class="table table-bordered table-hover">
+ <tr>
+    <th>Название</th>
+    <th>Бренд</th>
+    <th>Описание</th>
+    <th>Изображение</th>
+    <th>Цена</th>
+ </tr>
+
+</div>
+<% @cart.line_items.each do |item| %>
+	<tr>
+		<td><%= item.product.title %></td>
+    <td><%= item.product.brand.title %></td>
+		<td><%= item.product.description %></td>
+		<td><%= image_tag item.product.avatar.url ,:style=>"height:100px" %></td>
+		<td><strong><%= item.product.price %></strong></td>
+	</tr>
+<% end %>
+</table>
+<div align="right">
+<h4>Сумма:</h4>
+<p><strong><%= @total_price %> рублей</strong></p>
+</div>
+<%= button_to "Оформить заказ", root_path , :class => "btn btn-success"%>
+

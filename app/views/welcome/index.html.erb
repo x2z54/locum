@@ -1,0 +1,79 @@
+
+<%= render "layouts/reg" %>
+
+<%= render "layouts/cart" %>
+
+<%= render "layouts/head" %>
+
+<%= render "layouts/menu" %>
+
+   <div class = "span9">
+    
+    <div class="span8" align="left" >
+          <%= image_tag "main1.png", :style=>"height:350px;width:99,8%" %>
+    </div>
+
+    <div class="span3" style="margin-left:0.5%;margin-right:2%;" >
+      <%= image_tag "logo2.jpg",:style =>"height:220px;width:76.3%"  %>
+      <br><br>
+      <address style="margin-left:10%">
+      <strong>м. Пражская<br>
+      ул. Кировоградская, 13
+    </strong>
+      <p class="text-error">Павильон 92 <br> Павильон 9</p>
+      </address>
+    </div>
+  </div>
+
+  <div class = "span1" id="cart" align="right">
+     <a href="#myCart" data-toggle="modal"><%= image_tag("cart.png") %> </a>
+     <p>Товаров:<b>12</b></p>
+  </div>
+
+          <div class="row-fluid">
+            <div class="span4" id="head1">
+              <%= image_tag "left_head.png", :align=>"left" %>
+              <div style="margin-top:1%;">
+              <h7 style="font-size:20px"><strong>Магазин сантехники</strong></h7>
+              </div>
+              <br>
+              <p>Добро пожаловать в интернет-магазин сантехники.<br><br> Мы рады предложить Вам широкий ассортимент товаров.</p>
+              <%= link_to "Перейти в каталог", {:controller => :catalog}, :class=>"btn btn-info" %>
+            </div><!--/span-->
+
+            <div class="span4" id="head2">
+              <%= image_tag "right_head2.png", :align=>"left" %>
+              <div style="margin-top:1%;">
+              <h7 style="font-size:20px;"><strong>Бесплатное обслуживание</strong></h7>
+          </div>
+              <br>
+              <p>Вы можете выбрать особые условия бесплатной установки и замены старого оборудования.<br>Это значительно сократит Ваши расходы!</p>
+              <a class="btn" href="#">Подробнее &raquo;</a>
+            </div><!--/span-->
+
+    <div class="span7" style="margin-left:19%;margin-bottom:0;height:150px">
+      <hr>
+    <h4>Популярные товары</h4>
+        <div class="span2" style="margin-bottom:5%;margin-left:3%">
+          <%= image_tag "hansgrohe1.jpg", :class=>"img-polaroid", :style=>"width:99%;height:99%" %>
+      <h5>MONICA Hansgrohe</h5>
+    </div>
+        <div class="span2" style="margin-bottom:5%;margin-left:5%">
+          <%= image_tag "hansgrohe2.jpg", :class=>"img-polaroid", :style=>"width:99%;height:99%" %> 
+      <h5>MONICA Hansgrohe</h5>
+    </div>
+            <div class="span2" style="margin-bottom:5%;margin-left:5%">
+      <%= image_tag "hansgrohe3.jpg", :class=>"img-polaroid", :style=>"width:99%;height:99%" %>
+      <h5>MONICA Hansgrohe</h5>
+    </div>
+            <div class="span2" style="margin-bottom:5%;margin-left:5%">
+      <%= image_tag "rifar1.jpg", :class=>"img-polaroid", :style=>"width:99%;height:99%" %>
+      <h5>Rifar</h5>
+    </div>
+            <div class="span2" style="margin-bottom:5%;margin-left:5%">
+      <%= image_tag "sira1.jpg", :class=>"img-polaroid", :style=>"width:99%;height:99%" %>
+      <h5>Sira</h5>
+    </div>
+  </div>
+          </div>
+

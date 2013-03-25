@@ -1,0 +1,16 @@
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Панель управления</li>
+              <li><%= link_to "Главная", :controller => :admin %></li>
+              <li><%= link_to "Продукты", products_path %></li>
+              <li><%= link_to "Пользователи", users_path %></li>
+              <li><%= link_to "Категории", categories_path %></li>
+              <li><%= link_to "Бренды", brands_path %></li>
+              <hr>
+              <li><%= link_to "На сайт", root_path %></li>
+              <hr>
+              <li><%= link_to "Выйти", log_out_path %></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->

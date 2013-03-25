@@ -1,0 +1,13 @@
+<%= form_for :user, :url => { :action => :create } do |f| %>
+
+
+
+<div class="span9" style="margin:auto;float:none;align:center">
+    <div class="alert alert-info">
+            <h1 align="center">Ой!</h1>
+    </div>
+    <div class="alert alert-block">
+            <h5>Возможно вы неправильно заполнили какое-то поле или такой E-mail уже используется</h5>
+    </div>
+            <%= link_to "Попробовать снова", {:controller => :welcome}, :class => "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,29 @@
+<%= form_for(@brand) do |f| %>
+  <% if @brand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+
+      <ul>
+      <% @brand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p>Название</p>
+    <%= f.text_field :title %>
+  </div>
+    <div class="field">
+    <% Category.all.each do |cat| %>  
+    <%= check_box_tag 'brand[category_ids][]', cat.id, @brand.category_ids.include?(cat.id) %>
+    <%= label 'brand', 'category_ids', h(cat.title), :value => cat.id %>  
+    
+  
+<% end %>  
+  </div>
+  <div class="actions">
+    <%= f.submit "Изменить"%>
+  </div>
+<% end %>

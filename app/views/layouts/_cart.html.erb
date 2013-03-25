@@ -1,0 +1,24 @@
+<!-- CART -->
+<div id="myCart" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Корзина</h3>
+  </div>
+  <div class="modal-body">
+
+
+    <div class="span2" style="width:110px;margin-left:9%;margin-bottom:5%">
+      <%= image_tag "hansgrohe1.jpg", :class=>"img-polaroid", :style=>"width:100px;height:100px" %>
+      <h5>1шт.</h5>
+        <h7>3000 руб.</h7>
+    </div>
+
+  </div>
+  <div style="margin-left:2%">
+      <h5>Сумма : <strong>27000</strong></h5>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+    <a href="order.html"><button class="btn btn-primary">Оформить заказ</button></a>
+  </div>
+</div>

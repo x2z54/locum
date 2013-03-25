@@ -1,0 +1,26 @@
+<%= render "layouts/panel" %>
+
+<div class="span13" style="margin-left:5%" >
+  <div class="alert alert-info">
+    <h1>Бренды</h1>
+  </div>
+<hr>
+<table class = "table table-bordered table-hover">
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @brands.each do |brand| %>
+  <tr>
+    <td><%= brand.title %></td>
+    <td><%= link_to 'Редактировать', edit_brand_path(brand) %></td>
+    <td><%= link_to 'Удалить', brand, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить бренд', new_brand_path %>

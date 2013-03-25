@@ -1,0 +1,5 @@
+            <ul class="nav">
+              <li class="active"><%= link_to "Главная", root_path %></li>
+              <li><%= link_to "Контакты", :controller => :contact %></li> 
+              <li><%= link_to "Личный кабинет", :controller => :users, :action => :show, :id => session[:user_id]%></li> 
+            </ul>

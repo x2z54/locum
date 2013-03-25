@@ -1,0 +1,36 @@
+<%= javascript_include_tag "application" %>
+
+<%= render "layouts/panel" %>
+
+
+<div class="span13" style="margin-left:5%" >
+  <div class="alert alert-info">
+    <h1>Пользователи</h1>
+  </div>
+
+<hr>
+<table class="table table-bordered table-hover">
+  <tr>
+  	<th>ID</th>
+    <th>E-mail</th>
+    <th>Пароль</th>
+    <th>Адрес</th>
+    <th>Права</th>
+    <th></th>
+    <th></th> 
+  </tr>
+ 
+  <% @user.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.email  %></td>
+      <td><%= user.password_digest %></td>
+      <td><%= user.adress%></td>
+      <td><strong><%= user.role %></strong></td>
+      <td><%= link_to 'Редактировать', :action => :edit, :id => user.id %></td>
+      <td><%= link_to 'Удалить', { :action => :destroy, :id => user.id }, :method => :delete, :confirm => 'Are you sure?' %></td>
+    </tr>
+  <%end%>
+</table>
+<hr><br>
+</div>
