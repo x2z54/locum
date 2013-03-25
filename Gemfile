@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'mysql2'
 
 gem 'acts_as_shopping_cart', '~> 0.1.4'
 gem 'json'
