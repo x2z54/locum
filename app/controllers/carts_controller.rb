@@ -45,23 +45,14 @@ class CartsController < ApplicationController
   def create
     if session[:cart_id] != nil
       @cart = Cart.find(session[:cart_id])
+      product = Product.find(params[:product_id])
+      @line_item = @cart.line_items.build(:product => product)
+      @line_item.save
+      redirect_to :action => :show, :id => @cart.id
     else
       redirect_to :controller => :catalog
     end
-    product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(:product => product)
-      respond_to do |format|
-        if @line_item.save
-          format.html { redirect_to(@line_item.cart,
-            :notice => 'Line item was successfully created.') }
-            format.xml { render :xml => @line_item,
-            :status => :created, :location => @line_item }
-        else
-            format.html { render :action => "new" }
-            format.xml { render :xml => @line_item.errors,
-            :status => :unprocessable_entity }
-        end
-      end
+
 
   end
 

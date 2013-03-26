@@ -53,16 +53,8 @@ class BrandsController < ApplicationController
   # POST /brands.json
   def create
     @brand = Brand.new(params[:brand])
-
-    respond_to do |format|
-      if @brand.save
-        format.html { redirect_to @brand, notice: 'Brand was successfully created.' }
-        format.json { render json: @brand, status: :created, location: @brand }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @brand.errors, status: :unprocessable_entity }
-      end
-    end
+    @brand.save
+    redirect_to brands_path
   end
 
   # PUT /brands/1
