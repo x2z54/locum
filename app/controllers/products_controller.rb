@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
-            if session[:user_id] != nil
+        if session[:user_id] != nil
         @current_user = User.find(session[:user_id])
         if @current_user[:role] != "Admin"
           redirect_to :action => :show, :id => @current_user[:id]
@@ -51,16 +51,9 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-
-    respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to @product, :notice => 'Product was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @product.errors, :status => :unprocessable_entity }
+        redirect_to products_path
       end
-    end
   end
 
   # DELETE /products/1

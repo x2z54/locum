@@ -1,3 +1,54 @@
+<%= stylesheet_link_tag 'bootstrap-fileupload.css' %>
+<%= javascript_include_tag 'bootstrap-fileupload.js' %>
+<%= form_for @product ,:html => {:multipart => true, :method => :put} do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+<div style="margin:0;float:none;" align="center">
+  <div class="field">
+    <p>Название</p>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <p>Описание</p>
+    <%= f.text_area :description, :rows => "5" %>
+  </div>
+  <p>Изображение</p>
+  <div class="fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+  <div>
+    <span class="btn btn-file"><%= f.file_field :avatar %><span class="fileupload-new">Загрузить</span>
+    <span class="fileupload-exists">Изменить</span><input type="file" /></span>
+    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Удалить</a>
+  </div>
+</div>
+  <div class="field">
+  </div>
+  <div class="field">
+    <p>Цена</p>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <p>Бренд</p>
+    <%= collection_select :product, :brand_id, Brand.all, :id, :title, :selected => @product.brand_id %>
+  </div>
+  <div class="field">
+    <p>Категория</p>
+    <%= collection_select :product, :category_id, Category.all, :id, :title, :selected => @product.category_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit  "Добавить товар"%>
+  </div>
+  <br><br>
+  <%= link_to 'Назад', products_path %>
+</div>
+<% end %>

@@ -13,8 +13,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-    @cart = Cart.find(params[:id])
-
+    @cart = Cart.find(session[:cart_id])
     @total_price = 0
     @cart.line_items.each do |item|
       @total_price += item.product.price 
@@ -44,7 +43,11 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = current_cart
+    if session[:cart_id] != nil
+      @cart = Cart.find(session[:cart_id])
+    else
+      redirect_to :controller => :catalog
+    end
     product = Product.find(params[:product_id])
     @line_item = @cart.line_items.build(:product => product)
       respond_to do |format|

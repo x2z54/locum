@@ -6,7 +6,8 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'capistrano'
+gem 'unicorn'
 gem 'acts_as_shopping_cart', '~> 0.1.4'
 gem 'json'
 gem "bcrypt-ruby"

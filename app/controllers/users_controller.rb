@@ -21,7 +21,7 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 
   	def create
 		@user = User.new(params[:user])
-		if @user[:id] = 1
+		if @user[:id] == 1
 			@user[:role] = "Admin"
 		else
 		    @user[:role] = "User"

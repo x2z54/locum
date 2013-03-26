@@ -28,7 +28,7 @@
       <td><%= user.adress%></td>
       <td><strong><%= user.role %></strong></td>
       <td><%= link_to 'Редактировать', :action => :edit, :id => user.id %></td>
-      <td><%= link_to 'Удалить', { :action => :destroy, :id => user.id }, :method => :delete, :confirm => 'Are you sure?' %></td>
+      <td><%= link_to 'Удалить', { :action => :destroy, :id => user.id }, :method => :delete, :confirm => 'Вы уверены?' %></td>
     </tr>
   <%end%>
 </table>
