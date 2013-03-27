@@ -3,7 +3,7 @@ class AdminController < ApplicationController
 		 	if session[:user_id] != nil
   			@current_user = User.find(session[:user_id])
   			if @current_user[:role] != "Admin"
-  				redirect_to :action => :show, :id => @current_user[:id]
+  				redirect_to :controller => :welcome
   			end
   		else
   			redirect_to :controller => :welcome
