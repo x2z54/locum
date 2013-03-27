@@ -8,15 +8,6 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 
   	def index
   		@user = User.all
-  		if session[:user_id] != nil
-  			@current_user = User.find(session[:user_id])
-  			if @current_user[:role] != "Admin"
-  				redirect_to :action => :show, :id => @current_user[:id]
-  			end
-  		else
-  			redirect_to :controller => :welcome
-  		end
-
   	end
 
   	def create
@@ -45,10 +36,6 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 	def edit
 		@user = User.find(params[:id])
 		@current_user = User.find(session[:user_id])
-		if @current_user[:role] != "Admin"
-			redirect_to :action => :show
-		else
-		end
 	end
 
 	def update
