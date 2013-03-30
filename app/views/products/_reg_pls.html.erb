@@ -1,0 +1,53 @@
+<!-- Modal -->
+<div id="regModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <div class="alert alert-info">
+    <h5>Для того, чтобы сделать заказ вы должны быть зарегистрированы.</h5>
+    <p>Регистрация займет совсем немного времени и позволит следить за Вашими заказами </p>
+  </div>
+  <div class="alert alert-block">
+    <p>Если Вы уже зарегистрированы, пожалуйста зайдите на сайт под вашим логином и паролем</p>
+  </div>
+  </div>
+  <div class="modal-body">
+
+      <%= form_for :user, :url => { :controller => :users,:action => :create }, :html => { :class => "form-horizontal"} do |f| %>
+      <%= f.error_messages %>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">Email</label>
+        <div class="controls">
+          <%= f.text_field :email, :placeholder => "Ваш Email" %> 
+        </div>
+     </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputPassword">Пароль</label>
+        <div class="controls">
+          <%= f.password_field :password, :placeholder => "Пароль" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.password_field :password_confirmation, :placeholder => "Подтвердите Пароль" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">Адрес</label>
+        <div class="controls">
+          <%= f.text_field :adress, :placeholder => "Ваш адрес" %>
+        </div>
+      </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+    <%= f.submit 'Принять', :class => "btn btn-primary" %>
+  </div>
+</div>
+<% end %>
+
+<a href="#regModal" data-toggle="modal" class = "btn btn-large btn-primary">Купить</a>

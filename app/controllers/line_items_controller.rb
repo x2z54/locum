@@ -2,12 +2,7 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @line_items }
-    end
+redirect_to root_path
   end
 
   # GET /line_items/1

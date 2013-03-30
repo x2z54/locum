@@ -8,5 +8,11 @@ class AdminController < ApplicationController
   		else
   			redirect_to :controller => :welcome
   		end
+
+      @category = Category.all
+      @brands = Brands.all
+      @orders = Order.all
+      @users = User.all
+      @products = Product.all
 	end
 end

@@ -3,7 +3,7 @@
 <%= render "layouts/panel" %>
 
 
-<div class="span13" style="margin-left:5%" >
+<div class="span13" style="margin-left:3%;width:80%"  >
   <div class="alert alert-info">
     <h1>Пользователи</h1>
   </div>
@@ -13,7 +13,6 @@
   <tr>
   	<th>ID</th>
     <th>E-mail</th>
-    <th>Пароль</th>
     <th>Адрес</th>
     <th>Права</th>
     <th></th>
@@ -24,11 +23,10 @@
     <tr>
       <td><%= user.id %></td>
       <td><%= user.email  %></td>
-      <td><%= user.password_digest %></td>
       <td><%= user.adress%></td>
       <td><strong><%= user.role %></strong></td>
-      <td><%= link_to 'Редактировать', :action => :edit, :id => user.id %></td>
-      <td><%= link_to 'Удалить', { :action => :destroy, :id => user.id }, :method => :delete, :confirm => 'Вы уверены?' %></td>
+      <td><%= link_to 'Редактировать', edit_user_path(user), :class => "btn btn-primary" %> </td>
+      <td><%= button_to 'Удалить', { :action => :destroy, :id => user.id }, :method => :delete, :confirm => 'Вы уверены?', :class => "btn btn-danger" %></td>
     </tr>
   <%end%>
 </table>

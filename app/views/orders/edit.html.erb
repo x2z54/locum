@@ -1,0 +1,11 @@
+  <div class="alert alert-info">
+    <h1>Редактирование заказа №<%= @order.id %></h1>
+  </div>
+
+  <div class="span4" style="margin-left:3%">
+  	<h2>Статус заказа</h2>
+  <%= form_for(@order) do |f| %>
+  	 <%= f.select(:status,["Готов","Обрабатывается","Отменен"]) %>
+  	 <%= f.submit "Применить", :class => "btn btn-success" %>
+  <%end%>
+  </div>

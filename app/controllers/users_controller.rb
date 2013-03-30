@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-http_basic_authenticate_with :name => "root", :password => "secret", :except => [:new, :show, :edit, :create]
 
 	def new
 
@@ -8,6 +7,14 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 
   	def index
   		@user = User.all
+  		  		if session[:user_id] != nil
+  			@current_user = User.find(session[:user_id])
+  			if @current_user[:role] != "Admin"
+  				redirect_to :action => :show, :id => @current_user[:id]
+  			end
+  		else
+  			redirect_to :controller => :welcome
+  		end
   	end
 
   	def create
@@ -18,6 +25,7 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 		    @user[:role] = "User"
 		end
 		if @user.save
+		UserMailer.registration_confirmation(@user).deliver
 		render "_good"
 		else
 		render "_error_messages"
@@ -28,6 +36,7 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 	def show
 		if session[:user_id] != nil
 			@user = User.find(session[:user_id])
+			@orders = Order.all
 		else 
 			redirect_to :controller => :welcome 
 		end
@@ -36,6 +45,10 @@ http_basic_authenticate_with :name => "root", :password => "secret", :except => 
 	def edit
 		@user = User.find(params[:id])
 		@current_user = User.find(session[:user_id])
+		if @current_user[:role] != "Admin"
+			redirect_to :action => :show
+		else
+		end
 	end
 
 	def update

@@ -1,7 +1,7 @@
 <%= render "layouts/head" %>
 <%= render "layouts/menu" %>
  
-     <div class="span7" style="margin-right:13%;margin-left:5%"> 
+     <div class="span8" style="margin-right:13%;margin-left:5%"> 
       <h3>Личный кабинет</h3>
       <div class="bs-docs-example">
             <ul id="myTab" class="nav nav-tabs">
@@ -58,47 +58,43 @@
 
 <% end %>
               <div class="tab-pane fade" id="orders">
-                <table class="table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Товар</th>
-                  <th>Цена</th>
-                  <th>Дата заказа</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="success">
-                  <td>1</td>
-                  <td>MONICA Hansgrohe</td>
-                  <td>1200 руб.</td>
-                  <td>01/04/2012</td>
-                  <td>Выполнен</td>
-                </tr>
-                <tr class="error">
-                  <td>2</td>
-                  <td>Sira RS</td>
-                  <td>5000 руб.</td>
-                  <td>02/04/2012</td>
-                  <td>Отменён</td>
-                </tr>
-                <tr class="warning">
-                  <td>3</td>
-                  <td>Kaiser</td>
-                  <td>1200 руб.</td>
-                  <td>03/04/2012</td>
-                  <td>Ожидается</td>
-                </tr>
-                <tr class="info">
-                  <td>4</td>
-                  <td>Bugati</td>
-                  <td>1200 руб.</td>
-                  <td>04/04/2012</td>
-                  <td>Обрабатывается</td>
-                </tr>
-              </tbody>
-            </table>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>Номер заказа</th>
+    <th>Почта</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Телефон</th>
+    <th>Тип</th>
+    <th>Оплата</th>
+    <th>Статус</th>
+  </tr>
+
+<% @orders.each do |order| %>
+<% if order.User_order == @user.id  %>
+     <%= if order.status == "Готов" 
+        render "success"
+      elsif order.status == "Обрабатывается"
+        render "info"
+      elsif order.status == nil
+      render "warning"
+      elsif order.status == "Отменен"
+      render "cancel"
+      end %>
+    <td><strong><%= order.id %></strong></td>
+    <td><%= order.email %></td>
+    <td><%= order.name %></td>
+    <td><%= order.surname %></td>
+    <td><%= order.phone %></td>
+    <td><%= order.order_type %></td>
+    <td><%= order.pay%></td>
+    <td><%= order.status %></td>
+  </tr>
+<% end %>   
+
+
+<% end %>
+</table>
 
               </div>
             </div>

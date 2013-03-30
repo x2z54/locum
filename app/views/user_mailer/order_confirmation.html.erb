@@ -1,0 +1,30 @@
+
+<h1>Спасибо за Ваш заказ, <%= @order.name %></h1>
+===============================================
+<br> 
+<h3>Ваш заказ № <%= @order.id %></h3>
+<br>
+<p>Вы заказали следующие товары:</p>
+<br>
+<table>
+ <tr>
+    <th>Название</th>
+    <th>Бренд</th>
+    <th>Цена</th>
+ </tr>
+
+<% @order.line_items.each do |item| %>
+  <tr>
+    <td><%= item.product.title %></td>
+    <td><%= item.product.brand.title %></td>
+    <td><strong><%= item.product.price %></strong></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<h4>Всего к оплате:</h4>
+<h4><strong><%= @total_price %> рублей</strong></h4>
+<br>
+Отслеживать Ваши заказы вы можете в личном кабинете, авторизовавшись на сайте.
+<br> 
+<strong>Благодарим за Ваш заказ!</strong>

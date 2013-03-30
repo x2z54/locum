@@ -1,7 +1,7 @@
 
 <%= render "layouts/reg" %>
 
-<%= render "layouts/cart" %>
+
 
 <%= render "layouts/head" %>
 
@@ -11,7 +11,7 @@
     <div class="span7" style="margin-right:13%;margin-left:5%">
     <h3>Каталог</h3>
     <hr>
-    <h4 style="margin-left:2%">Смесители: MONICA Hansgrohe</h4>
+    <h4 style="margin-left:2%">Смесители: <%= @product.brand.title %></h4>
     <hr>
     <ul class="thumbnails">
       <li class="span4">
@@ -19,20 +19,22 @@
         <%= image_tag @product.avatar.url, :style=>"text-align:right" %>
       </a>
       </li>
-      <div class="span4">
-        <h2><%= @product.title %></h2>
-        <p>Категория: <%= @product.category.title %></p>
+      <div class="span3">
+        <h2><strong><%= @product.title %></strong></h2>
+        <p>Категория: <strong><%= @product.category.title %></strong></p>
+        <p>Артикул: <strong><%= @product.article %></strong></p>
+        <p>Коллекция: <strong><%= @product.collection %></strong></p>
         <h3><%= @product.price %> p.</h3>
-        <%= button_to 'Купить', carts_path(:product_id => @product), :class => "btn btn-large btn-primary" %>
+        <%= if session[:user_id] == nil
+          render "reg_pls"
+        else
+          render "buy"
+        end %>
       </div>
-      <div class="span4" style="margin-top:5%">
+      <div class="span5" style="margin-top:5%">
+        <h4>Описание</h4>
         <p><%= @product.description %></p>
       </div>
     </ul>
-
+<hr>
   </div>
-
-    <div class = "span1" id="cart" align="right">
-        <a href="#myCart" data-toggle="modal"><%= image_tag "cart.png" %></a>
-        <p>Товаров:<b>12</b></p>
-    </div>

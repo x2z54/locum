@@ -1,14 +1,27 @@
+
+
  <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <%@categories.each do |category|%>
-                <li class="nav-header"><%=category.title%></li>
-                <%category.brands.each do |brand|%>
-                <li><%= link_to  brand.title, brand_products_path(category.id,brand.id)%></li>
-                <%end%>
-              <%end%>
-            </ul>
-          </div><!--/.well -->
+<%@categories.each do |category|%>
+<div class="accordion" id="collapse<%= category.title %>" style="margin-bottom:1%">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapse<%= category.title %>" href="#<%= category.title %>">
+        <strong><%= category.title %></strong>
+      </a>
+    </div>
+
+    <div id="<%= category.title %>" class="accordion-body collapse ">
+      <div class="accordion-inner">
+        <%category.brands.each do |brand|%>
+        <ul class="nav nav-tabs nav-stacked" style="margin-bottom:2%">
+        <li><%= link_to  brand.title, brand_products_path(category.id,brand.id)%></li>
+      </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
         </div><!--/span-->

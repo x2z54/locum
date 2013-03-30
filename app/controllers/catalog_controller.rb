@@ -1,7 +1,8 @@
 class CatalogController < ApplicationController
+
+
 	def index
-		@products = Product.all
-		
+		@products = Product.order("id").page(params[:page]).per(2)
 	end
 
 	def brand
@@ -9,4 +10,5 @@ class CatalogController < ApplicationController
 		@brand = Brand.find(params[:brand_id])
 		@products = Product.where(category_id: params[:category_id], brand_id: params[:brand_id]).includes([:category,:brand]).all
 	end
+
 end

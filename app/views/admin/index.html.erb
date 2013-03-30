@@ -5,5 +5,27 @@
 <div class="span7" style="margin-right:13%;margin-left:5%"> 
   <div class="alert alert-info">
     <h1>Панель управления сайтом</h1>
+    <strong><p>Здесь Вы можете отслеживать заказы, добавлять новые категории, бренды, товары и просматривать статистику сайта</p></strong>
   </div>
+  <hr>
+  <h3>Статистика:</h3>
+  <h5>Всего:</h5>
+<table class="table table-bordered table-hover">
+  <tr>
+  	<th>Категорий</th>
+    <th>Брендов</th>
+    <th>Товаров</th>
+    <th>Пользователей</th>
+    <th>Заказов</th>
+  </tr>
+  <td><%= @category.size %></td>
+  <td><%= @brands.size %></td>
+  <td><%= @products.size %></td>
+  <td><%= @users.size %></td>
+  <td><%= @orders.size %></td>
+</table>
+<hr>
+<div class="span7" style="margin-right:13%;margin-left:5%"> 
+	<p>По всем вопросам касательно работы сайта Вы можете обратиться на почту <a href="mailto:#">flashbulb54@gmail.com</a></p>
+</div>
 </div>

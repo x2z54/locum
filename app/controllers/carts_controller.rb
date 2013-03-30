@@ -2,12 +2,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @carts }
-    end
+redirect_to root_path
   end
 
   # GET /carts/1
@@ -38,6 +33,11 @@ class CartsController < ApplicationController
   # GET /carts/1/edit
   def edit
     @cart = Cart.find(params[:id])
+        @current_user = User.find(session[:user_id])
+    if @current_user[:role] != "Admin"
+      redirect_to :action => :show
+    else
+    end
   end
 
   # POST /carts

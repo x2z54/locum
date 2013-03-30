@@ -13,15 +13,33 @@
     </div>
   <% end %>
 
-<div style="margin:0;float:none;" align="center">
+ <%= render "layouts/panel" %>
+  
+<div class="span13" style="margin-left:5%" >
+  <div class="alert alert-info">
+  <h1>Добавление продукта</h1>
+  </div>
+
+<div style="margin-left:3%;margin-top:2%" class="span3">
   <div class="field">
     <p>Название</p>
     <%= f.text_field :title %>
+  </div>
+    <div class="field">
+    <p>Артикул</p>
+    <%= f.text_field :article %>
+  </div>
+    <div class="field">
+    <p>Коллекция</p>
+    <%= f.text_field :collection %>
   </div>
   <div class="field">
     <p>Описание</p>
     <%= f.text_area :description, :rows => "5" %>
   </div>
+</div>
+
+<div style="margin-left:15%;margin-top:2%" class="span3">
   <p>Изображение</p>
   <div class="fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
@@ -31,8 +49,9 @@
     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Удалить</a>
   </div>
 </div>
-  <div class="field">
-  </div>
+</div>
+
+<div style="margin-left:15%;margin-top:2%" class="span3">
   <div class="field">
     <p>Цена</p>
     <%= f.text_field :price %>
@@ -45,10 +64,12 @@
     <p>Категория</p>
     <%= collection_select :product, :category_id, Category.all, :id, :title, :selected => @product.category_id %>
   </div>
-  <div class="actions">
-    <%= f.submit  "Добавить товар"%>
-  </div>
-  <br><br>
-  <%= link_to 'Назад', products_path %>
+    <p>Популярный:</p>
+  <%= f.check_box :popular %>
+        <hr>
+    <%= f.submit  "Добавить товар", :class => "btn btn-primary"%>
+    <br><br>
+    <%= link_to 'Назад', products_path %>
 </div>
+    </div>
 <% end %>

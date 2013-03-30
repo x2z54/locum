@@ -1,0 +1,51 @@
+
+<%= render "layouts/panel" %>
+
+
+<div class="span13" style="margin-left:3%;width:80%"  >
+  <div class="alert alert-info">
+    <h1>Заказы</h1>
+  </div>
+
+<hr>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>Номер заказа</th>
+    <th>Адрес</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Тип</th>
+    <th>Оплата</th>
+    <th>Статус</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <div class="pagination">
+<%= paginate @orders %>
+</div>
+<% @orders.each do |order| %>
+<%= if order.status == "Готов"
+render "success"
+elsif order.status == "Обрабатывается"
+render "info"
+elsif order.status == nil
+render "warning"
+elsif order.status == "Отменен"
+render "cancel"    
+end %>
+    <td><strong><%= order.id %></strong></td>
+    <td><%= order.adress %></td>
+    <td><%= order.name %></td>
+    <td><%= order.surname %></td>
+    <td><%= order.order_type %></td>
+    <td><%= order.pay%></td>
+    <td><%= order.status %></td>
+    <td><%= link_to 'Подробнее', order, :class => "btn btn-info" %></td>
+    <td><%= link_to 'Редактировать', edit_order_path(order), :class => "btn btn-primary" %></td>
+    <td><%= button_to 'Удалить', order, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+<hr><br>
+</div>

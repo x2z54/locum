@@ -1,0 +1,68 @@
+
+  <div class="alert alert-info">
+    <h1>Подробности заказа №<%= @order.id %></h1>
+  </div>
+
+<div class="span5">
+
+<p>
+  <b>Почта:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Адрес:</b>
+  <%= @order.adress %>
+</p>
+
+<p>
+  <b>Индекс:</b>
+  <%= @order.index %>
+</p>
+
+<p>
+  <b>Имя:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Фамилия:</b>
+  <%= @order.surname %>
+</p>
+
+
+
+<p>
+  <b>Телефон:</b>
+  <%= @order.phone %>
+</p>
+
+
+<h4>Всего к оплате:</h4>
+<h4><strong><%= @total_price %> рублей</strong></h4>
+  <%= link_to 'Назад', orders_path , :class=>"btn btn-info" %>
+
+</div>
+
+<div class="span12">
+<table class="table table-bordered table-hover">
+ <tr>
+    <th>Название</th>
+    <th>Бренд</th>
+    <th>Описание</th>
+    <th>Изображение</th>
+    <th>Цена</th>
+ </tr>
+
+
+<% @order.line_items.each do |item| %>
+  <tr>
+    <td><%= item.product.title %></td>
+    <td><%= item.product.brand.title %></td>
+    <td><%= item.product.description %></td>
+    <td><%= image_tag item.product.avatar.url ,:style=>"height:100px" %></td>
+    <td><strong><%= item.product.price %></strong></td>
+  </tr>
+<% end %>
+</table>
+</div>
