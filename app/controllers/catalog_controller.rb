@@ -2,7 +2,7 @@ class CatalogController < ApplicationController
 
 
 	def index
-		@products = Product.order("id").page(params[:page]).per(2)
+		@products = Product.all
 	end
 
 	def brand

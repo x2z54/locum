@@ -67,10 +67,7 @@
     <%= collection_select :product, :category_id, Category.all, :id, :title, :selected => @product.category_id %>
   </div>
   <p>Популярный:</p>
-  <%= f.check_box :popular, 
-                   {:checked => !@product.popular}, 
-                   0,
-                   1 %>
+  <%= f.check_box :popular %>
         <hr>
     <%= f.submit  "Добавить товар", :class => "btn btn-primary"%>
     <br><br>
