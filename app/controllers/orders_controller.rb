@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.order("id").page(params[:page]).per(5)
+    @orders = Order.paginate(:per_page => 5, :page => params[:page])
 if session[:user_id] != nil
         @current_user = User.find(session[:user_id])
         if @current_user[:role] != "Admin"

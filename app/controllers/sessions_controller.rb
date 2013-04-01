@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 	session[:user_id] = user.id
   cart = Cart.create
   session[:cart_id] = user.id
-	redirect_to :controller => :users, :action => :show, :id => user.id
+	redirect_to :controller => :welcome
 	else
     redirect_to :controller => :welcome
   	end

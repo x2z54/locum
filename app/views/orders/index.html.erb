@@ -22,7 +22,7 @@
     <th></th>
   </tr>
   <div class="pagination">
-<%= paginate @orders %>
+<%= will_paginate @orders, :renderer => BootstrapPagination::Rails %>
 </div>
 <% @orders.each do |order| %>
 <%= if order.status == "Готов"

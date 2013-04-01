@@ -4,7 +4,8 @@ gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem "kaminari"
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'therubyracer'
 gem 'mysql2'
 gem 'capistrano'
