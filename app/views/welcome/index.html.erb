@@ -54,7 +54,7 @@
       <% if product.popular %> 
         <div class="span2" style="margin-bottom:5%;margin-left:3%">
           <%= image_tag product.avatar.url, :class=>"img-polaroid", :style=>"width:99%;height:99%" %>
-          <h5>MONICA Hansgrohe</h5>
+          <h5><%= product.title %></h5>
         </div>
       <% end %>
     <% end %>

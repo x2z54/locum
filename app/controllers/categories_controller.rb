@@ -38,6 +38,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+        @category = Category.find(params[:id])
         if session[:user_id] != nil
         @current_user = User.find(session[:user_id])
         if @current_user[:role] != "Admin"
@@ -46,7 +47,6 @@ class CategoriesController < ApplicationController
       else
         redirect_to :controller => :welcome
       end
-    @category = Category.find(params[:id])
   end
 
   # POST /categories
@@ -61,16 +61,9 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.json
   def update
     @category = Category.find(params[:id])
-
-    respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        redirect_to categories_path
       end
-    end
   end
 
   # DELETE /categories/1

@@ -38,6 +38,7 @@ class BrandsController < ApplicationController
 
   # GET /brands/1/edit
   def edit
+        @brand = Brand.find(params[:id])
         if session[:user_id] != nil
         @current_user = User.find(session[:user_id])
         if @current_user[:role] != "Admin"
@@ -46,7 +47,6 @@ class BrandsController < ApplicationController
       else
         redirect_to :controller => :welcome
       end
-    @brand = Brand.find(params[:id])
   end
 
   # POST /brands
@@ -61,16 +61,9 @@ class BrandsController < ApplicationController
   # PUT /brands/1.json
   def update
     @brand = Brand.find(params[:id])
-
-    respond_to do |format|
       if @brand.update_attributes(params[:brand])
-        format.html { redirect_to @brand, notice: 'Brand was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @brand.errors, status: :unprocessable_entity }
+        redirect_to brands_path
       end
-    end
   end
 
   # DELETE /brands/1

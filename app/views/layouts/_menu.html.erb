@@ -4,15 +4,15 @@
       <div class="row-fluid">
         <div class="span2">
 <%@categories.each do |category|%>
-<div class="accordion" id="collapse<%= category.title %>" style="margin-bottom:1%">
+<div class="accordion" id="collapse<%= category.id %>" style="margin-bottom:1%">
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapse<%= category.title %>" href="#<%= category.title %>">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapse<%= category.id %>" href="#<%= category.id %>">
         <strong><%= category.title %></strong>
       </a>
     </div>
 
-    <div id="<%= category.title %>" class="accordion-body collapse ">
+    <div id="<%= category.id %>" class="accordion-body collapse ">
       <div class="accordion-inner">
         <%category.brands.each do |brand|%>
         <ul class="nav nav-tabs nav-stacked" style="margin-bottom:2%">
