@@ -48,7 +48,6 @@
             </div><!--/span-->
 
     <div class="span8" style="margin-left:2%;margin-bottom:0;height:150px">
-	</br>
     <h4>Популярные товары</h4>
     <% @products.each do |product|  %>
       <% if product.popular %> 
