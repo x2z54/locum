@@ -2,7 +2,8 @@ class CatalogController < ApplicationController
 
 
 	def index
-		@products = Product.all
+		@category = Category.all
+    	@products = @category.paginate(:per_page => 1, :page => params[:page])
 	end
 
 	def brand

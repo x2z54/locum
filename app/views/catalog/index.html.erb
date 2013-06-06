@@ -12,8 +12,10 @@
       <h5>Любые товары Вы так же можете увидеть в живую по нашему адресу.</h5>
     <hr>
 
-
-<%@categories.each do |category|%>
+<div class="pagination">
+<%= will_paginate @products, :renderer => BootstrapPagination::Rails %>
+</div>
+<%@products.each do |category|%>
     <div style="margin-left:2%;" class='category-wrapper'>
       <h4><%= category.title%></h4>
           <select  class='brand-select' style="width:170px" >

@@ -8,7 +8,10 @@
   </div>
   <%= link_to 'Добавить товар', new_product_path , :class=>"btn btn-info" %>
 <hr>
-<%Category.all.each do |category|%>
+<div class="pagination">
+<%= will_paginate @products, :renderer => BootstrapPagination::Rails %>
+</div>
+<%@products.each do |category|%>
 
   <% if category.products.count > 0%>
   <br>
@@ -28,6 +31,7 @@
   </tr>
   </thead>
 <tbody>
+
 
 <% category.products.each do |product| %>
   <tr>

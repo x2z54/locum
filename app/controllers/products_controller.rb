@@ -1,8 +1,11 @@
+require 'will_paginate/array'
+
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @category = Category.all
+    @products = @category.paginate(:per_page => 1, :page => params[:page])
         if session[:user_id] != nil
         @current_user = User.find(session[:user_id])
         if @current_user[:role] != "Admin"

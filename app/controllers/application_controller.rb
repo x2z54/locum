@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   	@categories = Category.includes(:brands)
   end
 
+
+
   private
 def current_cart
 Cart.find(session[:cart_id])
