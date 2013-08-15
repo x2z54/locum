@@ -1,5 +1,5 @@
 class CatalogController < ApplicationController
-layout "category", only: :brand
+
 
 	def index
 		@category = Category.all

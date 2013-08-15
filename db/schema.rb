@@ -50,24 +50,24 @@ ActiveRecord::Schema.define(:version => 20130330143555) do
     t.text     "adress"
     t.string   "name"
     t.string   "surname"
-    t.decimal  "index",      :precision => 10, :scale => 0
+    t.decimal  "index"
     t.string   "phone"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "status"
     t.text     "comment"
     t.string   "pay"
     t.string   "order_type"
-    t.decimal  "User_order", :precision => 10, :scale => 0
+    t.decimal  "User_order"
   end
 
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",               :precision => 10, :scale => 0
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.decimal  "price"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "brand"
     t.string   "category"
     t.integer  "category_id"
@@ -85,12 +85,12 @@ ActiveRecord::Schema.define(:version => 20130330143555) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "role"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "adress"
     t.string   "name"
     t.string   "surname"
-    t.decimal  "index",           :precision => 10, :scale => 0
+    t.decimal  "index"
     t.string   "phone"
   end
 

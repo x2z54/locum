@@ -48,11 +48,14 @@
             </div><!--/span-->
 
     <div class="span8" style="margin-left:2%;margin-bottom:0;height:150px">
+	</br>
     <h4>Популярные товары</h4>
     <% @products.each do |product|  %>
       <% if product.popular %> 
         <div class="span2" style="margin-bottom:5%;margin-left:3%">
-          <%= image_tag product.avatar.url, :class=>"img-polaroid", :style=>"width:99%;height:99%" %>
+          <a href="/products/<%=product.id %>">
+          <%= image_tag product.avatar.url, :class=>"img-polaroid", :style=>"width:99%;height:99%"%>
+        </a>
           <h5><%= product.title %></h5>
         </div>
       <% end %>
